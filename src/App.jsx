@@ -1,3 +1,4 @@
+import React from 'react';
 import Navbar from './components/Navbar';
 import HeroSpline from './components/HeroSpline';
 import Features from './components/Features';
@@ -5,12 +6,14 @@ import Footer from './components/Footer';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-white text-slate-900">
+    <div className="min-h-screen flex flex-col bg-white text-slate-900">
       <Navbar />
-      <main>
+
+      <main className="flex-1">
         <HeroSpline />
         <Features />
       </main>
+
       <Footer />
     </div>
   );
