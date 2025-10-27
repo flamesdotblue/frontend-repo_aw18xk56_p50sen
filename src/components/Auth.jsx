@@ -1,61 +1,93 @@
 import { useState } from 'react';
-import { User, Mail, Lock } from 'lucide-react';
+import { Mail, Lock, User, ArrowRight } from 'lucide-react';
 
 export default function Auth() {
   const [mode, setMode] = useState('signin');
 
   return (
-    <section className="min-h-[70vh] bg-gradient-to-b from-black to-slate-950 py-16">
-      <div className="mx-auto max-w-md px-6">
-        <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 shadow-2xl">
-          <div className="flex items-center justify-center gap-2">
-            <button
-              onClick={() => setMode('signin')}
-              className={`w-full rounded-md px-4 py-2 text-sm font-medium transition ${mode === 'signin' ? 'bg-indigo-600 text-white' : 'bg-white/10 text-white/80 hover:bg-white/20'}`}
-            >
-              Sign in
-            </button>
-            <button
-              onClick={() => setMode('signup')}
-              className={`w-full rounded-md px-4 py-2 text-sm font-medium transition ${mode === 'signup' ? 'bg-indigo-600 text-white' : 'bg-white/10 text-white/80 hover:bg-white/20'}`}
-            >
-              Create account
-            </button>
-          </div>
+    <section className="py-16">
+      <div className="mx-auto max-w-md px-4 sm:px-6">
+        <div className="mb-6 flex items-center justify-center gap-2">
+          <button
+            onClick={() => setMode('signin')}
+            className={`rounded-md px-3 py-1.5 text-sm font-semibold ${
+              mode === 'signin' ? 'bg-slate-900 text-white' : 'text-slate-700 hover:bg-slate-100'
+            }`}
+          >
+            Sign in
+          </button>
+          <button
+            onClick={() => setMode('signup')}
+            className={`rounded-md px-3 py-1.5 text-sm font-semibold ${
+              mode === 'signup' ? 'bg-slate-900 text-white' : 'text-slate-700 hover:bg-slate-100'
+            }`}
+          >
+            Create account
+          </button>
+        </div>
 
-          <form className="mt-6 space-y-4">
+        <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+          <h2 className="text-xl font-semibold text-slate-900">
+            {mode === 'signin' ? 'Welcome back' : 'Join EduSphere'}
+          </h2>
+          <p className="mt-1 text-sm text-slate-600">
+            {mode === 'signin' ? 'Access your account to continue learning.' : 'Start sharing and discovering resources.'}
+          </p>
+
+          <form className="mt-6 space-y-4" onSubmit={(e) => e.preventDefault()}>
             {mode === 'signup' && (
-              <div className="relative">
-                <User className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-white/60" />
-                <input
-                  type="text"
-                  placeholder="Full name"
-                  className="w-full rounded-md border border-white/10 bg-white/10 px-10 py-2 text-white placeholder:text-white/60 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                />
+              <div>
+                <label className="mb-1 block text-sm font-medium text-slate-700">Full name</label>
+                <div className="relative">
+                  <span className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+                    <User size={16} />
+                  </span>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Ada Lovelace"
+                    className="w-full rounded-md border border-slate-300 bg-white py-2 pl-9 pr-3 text-sm outline-none focus:border-indigo-500"
+                  />
+                </div>
               </div>
             )}
-            <div className="relative">
-              <Mail className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-white/60" />
-              <input
-                type="email"
-                placeholder="Email"
-                className="w-full rounded-md border border-white/10 bg-white/10 px-10 py-2 text-white placeholder:text-white/60 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-              />
+
+            <div>
+              <label className="mb-1 block text-sm font-medium text-slate-700">Email</label>
+              <div className="relative">
+                <span className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+                  <Mail size={16} />
+                </span>
+                <input
+                  type="email"
+                  required
+                  placeholder="you@example.com"
+                  className="w-full rounded-md border border-slate-300 bg-white py-2 pl-9 pr-3 text-sm outline-none focus:border-indigo-500"
+                />
+              </div>
             </div>
-            <div className="relative">
-              <Lock className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-white/60" />
-              <input
-                type="password"
-                placeholder="Password"
-                className="w-full rounded-md border border-white/10 bg-white/10 px-10 py-2 text-white placeholder:text-white/60 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-              />
+
+            <div>
+              <label className="mb-1 block text-sm font-medium text-slate-700">Password</label>
+              <div className="relative">
+                <span className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+                  <Lock size={16} />
+                </span>
+                <input
+                  type="password"
+                  required
+                  placeholder="••••••••"
+                  className="w-full rounded-md border border-slate-300 bg-white py-2 pl-9 pr-3 text-sm outline-none focus:border-indigo-500"
+                />
+              </div>
             </div>
-            <button type="button" className="w-full rounded-md bg-indigo-600 px-4 py-2 font-medium text-white hover:bg-indigo-500 transition">
-              {mode === 'signin' ? 'Sign in' : 'Create account'}
+
+            <button
+              type="submit"
+              className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-md bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-indigo-700"
+            >
+              {mode === 'signin' ? 'Sign in' : 'Create account'} <ArrowRight size={16} />
             </button>
-            <p className="text-center text-xs text-white/60">
-              By continuing you agree to our Terms and Privacy Policy.
-            </p>
           </form>
         </div>
       </div>
