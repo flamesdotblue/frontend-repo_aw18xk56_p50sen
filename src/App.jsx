@@ -1,41 +1,37 @@
-import React from 'react';
-import Navbar from './components/Navbar.jsx';
-import HeroSpline from './components/HeroSpline.jsx';
-import Features from './components/Features.jsx';
-import Footer from './components/Footer.jsx';
+import Navbar from './components/Navbar';
+import HeroSpline from './components/HeroSpline';
+import Resources from './components/Resources';
+import Community from './components/Community';
 
-function App() {
+export default function App() {
   return (
-    <div className="min-h-screen bg-white dark:bg-neutral-950 text-neutral-900 dark:text-white">
+    <div className="min-h-screen bg-black text-white">
       <Navbar />
       <main>
         <HeroSpline />
-        <Features />
-        {/* CTA Section */}
-        <section className="py-14 sm:py-16">
-          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-            <div className="relative overflow-hidden rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-gradient-to-tr from-blue-600 via-cyan-500 to-violet-500 p-[1px]">
-              <div className="rounded-3xl bg-white dark:bg-neutral-950 p-8 sm:p-12 text-center">
-                <h3 className="text-2xl sm:text-3xl font-bold">Join the learning community</h3>
-                <p className="mt-3 text-neutral-700 dark:text-neutral-300 max-w-2xl mx-auto">
-                  Create your profile, follow topics you care about, and start sharing knowledge today.
-                </p>
-                <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-                  <a href="#" className="inline-flex items-center gap-2 rounded-xl bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 px-5 py-2.5 text-sm font-semibold">
-                    Create account
-                  </a>
-                  <a href="#features" className="inline-flex items-center gap-2 rounded-xl border border-neutral-200 dark:border-neutral-800 px-5 py-2.5 text-sm font-semibold hover:bg-neutral-50 dark:hover:bg-neutral-900/60">
-                    Explore features
-                  </a>
-                </div>
-              </div>
+        <Resources />
+        <Community />
+
+        <section id="join" className="py-20 bg-gradient-to-b from-black via-slate-950 to-black">
+          <div className="mx-auto max-w-7xl px-6 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold">Join the learning community</h2>
+            <p className="mt-3 text-white/70 max-w-2xl mx-auto">
+              Create your profile, follow topics, share resources, and collaborate in real time.
+            </p>
+            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
+              <a href="#" className="inline-flex items-center rounded-md bg-indigo-600 px-6 py-3 text-white font-medium hover:bg-indigo-500 transition">Sign up free</a>
+              <a href="#resources" className="inline-flex items-center rounded-md bg-white/10 px-6 py-3 text-white font-medium hover:bg-white/20 transition">Explore first</a>
             </div>
+            <p className="mt-6 text-xs text-white/50">By joining, you agree to our community guidelines.</p>
           </div>
         </section>
       </main>
-      <Footer />
+
+      <footer className="border-t border-white/10 py-8">
+        <div className="mx-auto max-w-7xl px-6 text-center text-white/60">
+          <p>© {new Date().getFullYear()} EduVerse. Learn together.</p>
+        </div>
+      </footer>
     </div>
   );
 }
-
-export default App;
